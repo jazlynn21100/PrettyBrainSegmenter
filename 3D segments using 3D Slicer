@@ -1,0 +1,77 @@
+# Create brain
+[success, masterVolumeNode] = slicer.util.loadVolume("/Users/m214492/Dropbox/CNV Modeling/Brain for Gustavo/BRAIN_MASK.nii.gz", returnNode=True)
+
+segmentationNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLSegmentationNode")
+segmentationNode.CreateDefaultDisplayNodes() # only needed for display
+segmentationNode.SetReferenceImageGeometryParameterFromVolumeNode(masterVolumeNode)
+addedSegmentID = segmentationNode.GetSegmentation().AddEmptySegment("brain")
+
+segmentEditorWidget = slicer.qMRMLSegmentEditorWidget()
+segmentEditorWidget.setMRMLScene(slicer.mrmlScene)
+segmentEditorNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLSegmentEditorNode")
+segmentEditorWidget.setMRMLSegmentEditorNode(segmentEditorNode)
+segmentEditorWidget.setSegmentationNode(segmentationNode)
+segmentEditorWidget.setMasterVolumeNode(masterVolumeNode)
+
+segmentEditorWidget.setActiveEffectByName("Threshold")
+effect = segmentEditorWidget.activeEffect()
+effect.setParameter("MinimumThreshold","1")
+effect.setParameter("MaximumThreshold","1")
+effect.self().onApply()
+
+segmentEditorWidget = None
+slicer.mrmlScene.RemoveNode(segmentEditorNode)
+
+segmentationNode.CreateClosedSurfaceRepresentation()
+
+# Create T1Gd
+[success, masterVolumeNode] = slicer.util.loadVolume("/Users/m214492/Dropbox/CNV Modeling/Brain for Gustavo/02-20-19/T1Gd_ROI_100991_100995.nii.gz", returnNode=True)
+
+segmentationNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLSegmentationNode")
+segmentationNode.CreateDefaultDisplayNodes() # only needed for display
+segmentationNode.SetReferenceImageGeometryParameterFromVolumeNode(masterVolumeNode)
+addedSegmentID = segmentationNode.GetSegmentation().AddEmptySegment("T1Gd")
+
+segmentEditorWidget = slicer.qMRMLSegmentEditorWidget()
+segmentEditorWidget.setMRMLScene(slicer.mrmlScene)
+segmentEditorNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLSegmentEditorNode")
+segmentEditorWidget.setMRMLSegmentEditorNode(segmentEditorNode)
+segmentEditorWidget.setSegmentationNode(segmentationNode)
+segmentEditorWidget.setMasterVolumeNode(masterVolumeNode)
+
+segmentEditorWidget.setActiveEffectByName("Threshold")
+effect = segmentEditorWidget.activeEffect()
+effect.setParameter("MinimumThreshold","1")
+effect.setParameter("MaximumThreshold","1")
+effect.self().onApply()
+
+segmentEditorWidget = None
+slicer.mrmlScene.RemoveNode(segmentEditorNode)
+
+segmentationNode.CreateClosedSurfaceRepresentation()
+
+# Create T2
+[success, masterVolumeNode] = slicer.util.loadVolume("/Users/m214492/Dropbox/CNV Modeling/Brain for Gustavo/02-20-19/FLAIR_ROI_100991_100988.nii.gz", returnNode=True)
+
+segmentationNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLSegmentationNode")
+segmentationNode.CreateDefaultDisplayNodes() # only needed for display
+segmentationNode.SetReferenceImageGeometryParameterFromVolumeNode(masterVolumeNode)
+addedSegmentID = segmentationNode.GetSegmentation().AddEmptySegment("T1Gd")
+
+segmentEditorWidget = slicer.qMRMLSegmentEditorWidget()
+segmentEditorWidget.setMRMLScene(slicer.mrmlScene)
+segmentEditorNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLSegmentEditorNode")
+segmentEditorWidget.setMRMLSegmentEditorNode(segmentEditorNode)
+segmentEditorWidget.setSegmentationNode(segmentationNode)
+segmentEditorWidget.setMasterVolumeNode(masterVolumeNode)
+
+segmentEditorWidget.setActiveEffectByName("Threshold")
+effect = segmentEditorWidget.activeEffect()
+effect.setParameter("MinimumThreshold","1")
+effect.setParameter("MaximumThreshold","1")
+effect.self().onApply()
+
+segmentEditorWidget = None
+slicer.mrmlScene.RemoveNode(segmentEditorNode)
+
+segmentationNode.CreateClosedSurfaceRepresentation()
