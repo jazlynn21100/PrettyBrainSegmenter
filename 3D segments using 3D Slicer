@@ -24,6 +24,15 @@ slicer.mrmlScene.RemoveNode(segmentEditorNode)
 
 segmentationNode.CreateClosedSurfaceRepresentation()
 
+segmentationNode=slicer.mrmlScene.GetFirstNodeByClass("vtkMRMLSegmentationNode")
+segmentationDisplayNode=segmentationNode.GetDisplayNode()
+segmentation=segmentationNode.GetSegmentation()
+
+# Change overall segmentation display properties
+segmentationDisplayNode.SetOpacity3D(0.2)
+
+segmentation.GetNthSegment(0).SetColor(1,1,1)
+
 # Create T1Gd
 [success, masterVolumeNode] = slicer.util.loadVolume("/Users/m214492/Dropbox/CNV Modeling/Brain for Gustavo/02-20-19/T1Gd_ROI_100991_100995.nii.gz", returnNode=True)
 
@@ -50,6 +59,15 @@ slicer.mrmlScene.RemoveNode(segmentEditorNode)
 
 segmentationNode.CreateClosedSurfaceRepresentation()
 
+segmentationNode=slicer.mrmlScene.GetSecondNodeByClass("vtkMRMLSegmentationNode")
+segmentationDisplayNode=segmentationNode.GetDisplayNode()
+segmentation=segmentationNode.GetSegmentation()
+
+# Change overall segmentation display properties
+segmentationDisplayNode.SetOpacity3D(0.5)
+
+segmentation.GetNthSegment(0).SetColor(1,0,0)
+
 # Create T2
 [success, masterVolumeNode] = slicer.util.loadVolume("/Users/m214492/Dropbox/CNV Modeling/Brain for Gustavo/02-20-19/FLAIR_ROI_100991_100988.nii.gz", returnNode=True)
 
@@ -75,3 +93,14 @@ segmentEditorWidget = None
 slicer.mrmlScene.RemoveNode(segmentEditorNode)
 
 segmentationNode.CreateClosedSurfaceRepresentation()
+
+segmentationNode=slicer.mrmlScene.GetThirdNodeByClass("vtkMRMLSegmentationNode")
+segmentationDisplayNode=segmentationNode.GetDisplayNode()
+segmentation=segmentationNode.GetSegmentation()
+
+# Change overall segmentation display properties
+segmentationDisplayNode.SetOpacity3D(0.4)
+
+segmentation.GetNthSegment(0).SetColor(0,0,1)
+
+
