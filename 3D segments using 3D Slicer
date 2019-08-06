@@ -1,5 +1,5 @@
 # Create brain
-[success, masterVolumeNode] = slicer.util.loadVolume("/Users/m214492/Dropbox/CNV Modeling/Brain for Gustavo/BRAIN_MASK.nii.gz", returnNode=True)
+[success, masterVolumeNode] = slicer.util.loadVolume("/Volumes/MLDL_Projects/D1_HU_TL_Normalization/HU0009_2014_11_03/BRAIN_MASK.nii.gz", returnNode=True)
 
 segmentationNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLSegmentationNode")
 segmentationNode.CreateDefaultDisplayNodes() # only needed for display
@@ -34,7 +34,7 @@ segmentationDisplayNode.SetOpacity3D(0.2)
 segmentation.GetNthSegment(0).SetColor(1,1,1)
 
 # Create T1Gd
-[success, masterVolumeNode] = slicer.util.loadVolume("/Users/m214492/Dropbox/CNV Modeling/Brain for Gustavo/02-20-19/T1Gd_ROI_100991_100995.nii.gz", returnNode=True)
+[success, masterVolumeNode] = slicer.util.loadVolume("/Volumes/MLDL_Projects/D1_HU_TL_Normalization/HU0009_2014_11_03/T1GD_ROI.nii.gz", returnNode=True)
 
 segmentationNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLSegmentationNode")
 segmentationNode.CreateDefaultDisplayNodes() # only needed for display
@@ -69,7 +69,7 @@ segmentationDisplayNode.SetOpacity3D(0.5)
 segmentation.GetNthSegment(0).SetColor(1,0,0)
 
 # Create T2
-[success, masterVolumeNode] = slicer.util.loadVolume("/Users/m214492/Dropbox/CNV Modeling/Brain for Gustavo/02-20-19/FLAIR_ROI_100991_100988.nii.gz", returnNode=True)
+[success, masterVolumeNode] = slicer.util.loadVolume("/Volumes/MLDL_Projects/D1_HU_TL_Normalization/HU0009_2014_11_03/T2_ROI.nii.gz", returnNode=True)
 
 segmentationNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLSegmentationNode")
 segmentationNode.CreateDefaultDisplayNodes() # only needed for display
